@@ -1,31 +1,112 @@
 ﻿@page "/counter"
 
 <PageTitle>Counter</PageTitle>
-
 <h1>Counter</h1>
-
 <p role="status">Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<hr />
+<div class="alert alert-primary">textのバインド</div>
 <div>
-    <input type="text" @bind="name1" placeholder="input your name1" />
-    <p>@name1</p>
+    <div>
+        ・textの場合,フォーカス：
+        <input class="col-4" type="text" @bind="name1" placeholder="input your name1" /> <span>@name1</span>
+    </div>
+    
+    <div>
+        ・textの場合,入力毎：
+        <input class="col-4" type="text" @bind="name2" placeholder="input your name2" @bind:event="oninput" /> <span>@name2</span>
+    </div>
+</div>
 
-    <input type="text" @bind="name2" placeholder="input your name2" @bind:event="oninput" />
-    <p>@name2</p>
+<hr />
+
+
+<div class="alert alert-primary">checkbox/ddlのバインド</div>
+<div>
+    <div>
+        ・チェックボックス：
+        <input type="checkbox" @bind="isChecked" />checkbox <span>result: @isChecked</span>
+    </div>
+
+    <div>
+        ・ドロップダウンリスト：
+        <select @bind="selectedKey">
+            @foreach (var item in dic)
+            {
+                <option value="@item.Value">@item.Key</option>
+            }
+        </select>
+        <span>result: @selectedKey</span>
+    </div>
+</div>
+
+<div class="alert alert-primary">イベントハンドラ</div>
+<div>
+    <button @onclick="GetMessage1">get-message-1</button>
+    <button @onclick="GetMessage2">get-message-2</button>
+    <button @onclick="GetMessage3">get-message-3</button>
+    <button @onclick='() => GetMessage4("hello world")'>get-message-4</button>
+    <button @onclick="(() => Message = DateTime.Now.ToString()) ">get-message-4</button>
+    <button @onclick="(e => Message = DateTime.Now.ToString()) ">get-message-5</button>
+    <p>result: @Message</p>
 </div>
 
 
 
+<div class="alert alert-primary">数値データバインド</div>
+<div>
+    <input type="text" @bind="age" placeholder="input your name." /><span>result: @age</span>
+    <input type="text" @bind="name" placeholder="input your name." /><span>result: @name</span>
+</div>
+
+<!-------------------------------------------------------------------------------->
 @code {
     private int currentCount = 0;
+    string name1 { get; set; } = "";
+    string name2 { get; set; } = "nobuyuki";
+    bool isChecked { get; set; }
 
-    string name1 = "";
-    string name2 = "nobuyuki";
+    string selectedKey = "";
+    Dictionary<string, string> dic = new Dictionary<string, string>()
+        {
+            { "key1", "value1" },
+            { "key2", "value2" },
+            { "key3", "value3" },
+        };
+
+    string age { get; set; } = "";
+    string name { get; set; } = "";
+
 
     private void IncrementCount()
     {
         currentCount++;
     }
+
+
+    string Message { get; set; } = "";
+
+    void GetMessage1()
+    {
+        Message = "hello world " + DateTime.Now.ToString();
+    }
+
+    void GetMessage2(MouseEventArgs e)
+    {
+        Message = "hello world " + DateTime.Now.ToString() + e.ShiftKey;
+    }
+
+    async Task GetMessage3()
+    {
+        await Task.Delay(3000);
+        Message = "hello world " + DateTime.Now.ToString();
+    }
+
+    void GetMessage4(string msg)
+    {
+        Message = msg;
+    }
 }
+
