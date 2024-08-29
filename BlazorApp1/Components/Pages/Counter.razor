@@ -1,0 +1,31 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<div>
+    <input type="text" @bind="name1" placeholder="input your name1" />
+    <p>@name1</p>
+
+    <input type="text" @bind="name2" placeholder="input your name2" @bind:event="oninput" />
+    <p>@name2</p>
+</div>
+
+
+
+@code {
+    private int currentCount = 0;
+
+    string name1 = "";
+    string name2 = "nobuyuki";
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
