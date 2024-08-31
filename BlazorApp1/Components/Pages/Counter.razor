@@ -44,12 +44,14 @@
 
 <div class="alert alert-primary">イベントハンドラ</div>
 <div>
-    <button @onclick="GetMessage1">get-message-1</button>
-    <button @onclick="GetMessage2">get-message-2</button>
-    <button @onclick="GetMessage3">get-message-3</button>
-    <button @onclick='() => GetMessage4("hello world")'>get-message-4</button>
-    <button @onclick="(() => Message = DateTime.Now.ToString()) ">get-message-4</button>
-    <button @onclick="(e => Message = DateTime.Now.ToString()) ">get-message-5</button>
+    <button @onclick="SetMessage1">get-message-1</button>
+    <button @onclick="SetMessage2">get-message-2</button>
+    <button @onclick="SetMessage3">get-message-3</button>
+    <button @onclick='() => SetMessage4("hello world")'>get-message-4</button>
+    <button @onclick="(() => Message = DateTime.Now.ToString()) ">get-message-5</button>
+    <button @onclick="(e => SetMessage4(msg1)) ">set-message-6</button>
+    <button @onclick="(e => Message = GetMessage5(msg1)) ">get-message-5</button>
+
     <p>result: @Message</p>
 </div>
 
@@ -67,6 +69,7 @@
     string name1 { get; set; } = "";
     string name2 { get; set; } = "nobuyuki";
     bool isChecked { get; set; }
+    string msg1 { get; set; } = "hello world!";
 
     string selectedKey = "";
     Dictionary<string, string> dic = new Dictionary<string, string>()
@@ -88,25 +91,30 @@
 
     string Message { get; set; } = "";
 
-    void GetMessage1()
+    void SetMessage1()
     {
         Message = "hello world " + DateTime.Now.ToString();
     }
 
-    void GetMessage2(MouseEventArgs e)
+    void SetMessage2(MouseEventArgs e)
     {
         Message = "hello world " + DateTime.Now.ToString() + e.ShiftKey;
     }
 
-    async Task GetMessage3()
+    async Task SetMessage3()
     {
         await Task.Delay(3000);
         Message = "hello world " + DateTime.Now.ToString();
     }
 
-    void GetMessage4(string msg)
+    void SetMessage4(string msg)
     {
         Message = msg;
+    }
+
+    string GetMessage5(string msg)
+    {
+        return "**" + msg + "**";
     }
 }
 
