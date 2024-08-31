@@ -1,0 +1,36 @@
+﻿@using BlazorApp1.Components.Shared
+
+<input type="text" @bind="Text" placeholder="@PlaceHolder" />
+
+@code {
+    private string _text = "";
+    private string _placeHolder = "";
+
+    [Parameter]
+    public string Text
+    {
+        get
+        {
+            return _text;
+        }
+        set
+        {
+            _text = value;
+            this.StateHasChanged(); // 再描画
+        }
+    }
+
+    [Parameter]
+    public string PlaceHolder
+    {
+        get
+        {
+            return _placeHolder;
+        }
+        set
+        {
+            _placeHolder = value;
+            this.StateHasChanged(); // 再描画
+        }
+    }
+}

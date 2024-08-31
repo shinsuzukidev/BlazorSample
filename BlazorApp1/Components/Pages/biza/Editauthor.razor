@@ -1,0 +1,29 @@
+﻿@page "/biza/editauthor/{AuthorId?}"
+
+<h3>editauthor</h3>
+<p>@AuthorId</p>
+
+<input type="button" @onclick="clicked" value="click me"/>
+<p>@Message </p>
+
+
+@code {
+    [Parameter]
+    public string AuthorId { get; set; } = "";
+
+    public string Message { get; set; } = "";
+
+
+    protected override void OnParametersSet()
+    {
+        if (string.IsNullOrEmpty(AuthorId))
+        {
+            throw new ArgumentException("AuthorId");
+        }
+    }
+
+    private void clicked()
+    {
+        Message = "clicked!";
+    }
+}

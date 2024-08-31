@@ -1,0 +1,21 @@
+﻿@using BlazorApp1.Components.Shared
+
+<span>@Text</span>
+
+@code {
+    private string _text = "";
+
+    [Parameter]
+    public string Text { 
+        get
+        {
+            return _text;
+        }
+        set {
+            _text = value;
+            this.StateHasChanged(); // 再描画
+        }
+    }
+
+
+}
