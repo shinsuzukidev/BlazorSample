@@ -1,0 +1,28 @@
+﻿@page "/BmiAttr"
+
+<h3>BmiAttr</h3>
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <td>name</td>
+            <td>height</td>
+            <td>weight</td>
+            <td>bmi</td>
+        </tr>
+    </thead>
+    @foreach (var item in bmiList)
+    {
+        // 属性スプラッティング（独自のデータクラスが増えないようにする場合）
+        var attrs = new Dictionary<string, object>()
+        {
+            { "Name", item.Name },
+            { "Height", item.Height},
+            { "Weight", item.Weight}
+        };
+
+        <BmiChildAttr @attributes="attrs" />
+    }
+</table>
+
+

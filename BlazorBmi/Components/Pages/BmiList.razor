@@ -1,0 +1,18 @@
+﻿@page "/bmilist"
+
+<h3>BmiList</h3>
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <td>name</td>
+            <td>height</td>
+            <td>weight</td>
+            <td>bmi</td>
+        </tr>
+    </thead>
+    @foreach (var item in bmiList)
+    {
+        <BmiChild Item="@item" />
+    }
+</table>
