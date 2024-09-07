@@ -1,0 +1,56 @@
+﻿@page "/form"
+
+<h3>EditForm</h3>
+
+<EditForm Model="addressModel" OnValidSubmit="onValidSubmit">
+    <DataAnnotationsValidator /> @* 検証機能を有効 *@
+    <ValidationSummary />　@* 検証エラーメッセージ *@
+
+    <div class="mb-3">
+        <label for="zipcode">郵便番号</label>
+        <InputText class="form-control" id="zipcode" @bind-Value ="addressModel.zipCode" />
+    </div>
+
+    <div class="mb-3">
+        <label for="prefecture">都道府県</label>
+        <InputSelect class="form-control" id="prefecture" @bind-Value="addressModel.prefecture" >
+            @foreach (var item in prefectureList)
+            {
+                <option>@item</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div class="mb-3">
+        <label for="telephone">電話番号</label>
+        <InputText class="form-control" id="telephone" @bind-Value="addressModel.telephone" />
+    </div>
+    
+    <div class="mb-3">
+        <label for="name">名前</label>
+        <InputText class="form-control" id="name" @bind-Value="addressModel.name" />
+    </div>
+    
+    <div class="mb-3">
+        <label for="age">年齢</label>
+        <InputNumber class="form-control" id="age" @bind-Value="addressModel.age" />
+    </div>
+    
+    <div class="mb-3">
+        <label>訪問日</label><br />
+        <div class="form-check form-check-inline">
+            <InputCheckbox class="form-check-input" id="boolvisit" @bind-Value="addressModel.isVisitDate" />
+            <label class="form-check-label" for="boolvisit" >訪問を希望する</label>
+        </div>
+        <InputDate class="form-control" id="visit" @bind-Value="addressModel.visitDate"></InputDate>
+    </div>
+
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit">登録</button>
+    </div>
+
+    <div class="mb-3">
+        @Message
+    </div>
+</EditForm>
+
