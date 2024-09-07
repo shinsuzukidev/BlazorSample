@@ -1,0 +1,12 @@
+﻿@page "/ParentToChild"
+
+<h3>親から子コンポーネントへ伝達する</h3>
+<div>
+    体重を入力
+    <input type="number" @bind="Weight"/>
+</div>
+<BmiChild @bind-Weight="Weight" />
+
+
+
+
