@@ -1,0 +1,55 @@
+﻿@page "/QuestForm"
+<h3>QuesrForm</h3>
+
+<div class="mb-3">
+    <label for="name">名前</label>
+    <input class="form-control" @bind="name" type="text" />
+</div>
+
+<div class="mb-3">
+    <label for="age">年齢</label>
+    <input class="form-control" @bind="age" type="number" />
+</div>
+
+
+<div class="mb-3">
+    <label for="prefecture">都道府県</label>
+    <select class="form-control" @bind="prefecture">
+        @foreach (var item in prefectureDic)
+        {
+            <option value="@item.Value">@item.Key</option>
+        }
+    </select>
+</div>
+
+<div class="mb-3">
+    <div>like language</div>
+    <div class="form-check form-check-inline">
+        <input type="checkbox" class="form-check-input" @bind="likeCSharp" id="likecsharp" />
+        <label class="form-check-label" for="likecsharp">C#</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input type="checkbox" class="form-check-input" @bind="likeVB" id="likevb" />
+        <label class="form-check-label" for="likevb">VB</label>
+    </div>
+</div>
+
+<div class="mb-3">
+    <button class="btn btn-primary" @onclick="onSubmit">登録</button>
+</div>
+<div class="mb-3">
+    @Message
+</div>
+
+
+
+<hr />
+<h3>debug: form input info.</h3>
+<div>
+    <p>@name</p>
+    <p>@age</p>
+    <p>@prefecture</p>
+    <p>@likeCSharp</p>
+    <p>@likeVB</p>
+</div>
+

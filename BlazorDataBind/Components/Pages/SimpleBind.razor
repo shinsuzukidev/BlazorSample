@@ -1,0 +1,26 @@
+﻿@page "/SimpleBind"
+
+<h3>SimpleBind</h3>
+
+<div class="form-group">
+    <label class="col-form-label">title</label>
+    <input @bind="Title" class="form-control" />
+</div>
+<div>
+    <label class="col-form-label">フォーカスが外れた時更新</label>
+    <div>@Title</div>
+</div>
+
+<hr />
+
+<div class="form-group">
+    <label class="col-form-label">title</label>
+    <input @bind="Title2" @bind:event="oninput" class="form-control" />
+</div>
+<div>
+    <label class="col-form-label">即時更新</label>
+    <div>@Title2</div>
+</div>
+
+
+
