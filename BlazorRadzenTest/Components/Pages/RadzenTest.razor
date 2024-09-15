@@ -1,0 +1,33 @@
+﻿@page "/radzentest"
+@rendermode InteractiveServer
+@inject DialogService DialogService
+@inject NotificationService NotificationService
+
+<RadzenComponents />
+
+<PageTitle>Radzen Test</PageTitle>
+
+<RadzenButton Click=@(() => ShowAlert("Some message!")) Text="ShowAlert" ButtonStyle="ButtonStyle.Primary"></RadzenButton>
+<RadzenButton Click=@(() => NotifyMessage("button - onclick")) Text="NotifyMessage" ButtonStyle="ButtonStyle.Primary"></RadzenButton>
+
+@code {
+    public void ShowAlert(string msg)
+    {
+        DialogService.Alert(msg, "MyTitle", new AlertOptions() { OkButtonText = "Yes" });
+        //DialogService.Alert("Some message!", "MyTitle", new AlertOptions() { OkButtonText = "Yes" });
+    }
+
+    private void NotifyMessage(string msg)
+    {
+        Notify(msg);
+    }
+
+    /// <summary>
+    /// 画面に通知
+    /// </summary>
+    /// <param name="text"></param>
+    private void Notify(string text)
+    {
+        NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Button Clicked", Detail = text });
+    }
+}

@@ -1,0 +1,33 @@
+﻿@page "/counter"
+@rendermode InteractiveServer
+<RadzenComponents />
+
+<PageTitle>Counter</PageTitle>
+
+<RadzenCard>
+    <RadzenText TextStyle="TextStyle.H3">About</RadzenText>
+    <RadzenText TextStyle="TextStyle.Body1"> .. blah blah blah ...</RadzenText>
+</RadzenCard>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<RadzenButton Click="@ButtonClicked" Text="Hi"></RadzenButton>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    void ButtonClicked()
+    {
+        // Handle the Click event of RadzenButton
+    }
+
+}

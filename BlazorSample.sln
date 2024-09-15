@@ -5,13 +5,15 @@ VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1", "BlazorApp1\BlazorApp1.csproj", "{6C08234F-3FD6-4730-970F-434473C13935}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorHello", "BlazorHello\BlazorHello.csproj", "{130B401F-33A4-4498-9CC2-7CD6752269DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorHello", "BlazorHello\BlazorHello.csproj", "{130B401F-33A4-4498-9CC2-7CD6752269DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorBmi", "BlazorBmi\BlazorBmi.csproj", "{10500E7C-DDD2-4073-8D5D-9ECA17623218}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorBmi", "BlazorBmi\BlazorBmi.csproj", "{10500E7C-DDD2-4073-8D5D-9ECA17623218}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorDataBind", "BlazorDataBind\BlazorDataBind.csproj", "{915022F7-3AE7-446F-9E46-AF730BB1EFDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDataBind", "BlazorDataBind\BlazorDataBind.csproj", "{915022F7-3AE7-446F-9E46-AF730BB1EFDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorForm", "BlazorForm\BlazorForm.csproj", "{D2E9E022-DAF6-4CAB-A525-98F2F8B8BD12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorForm", "BlazorForm\BlazorForm.csproj", "{D2E9E022-DAF6-4CAB-A525-98F2F8B8BD12}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorRadzenTest", "BlazorRadzenTest\BlazorRadzenTest.csproj", "{439D7E06-99D7-4ACE-92E7-CA47B789E430}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{D2E9E022-DAF6-4CAB-A525-98F2F8B8BD12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2E9E022-DAF6-4CAB-A525-98F2F8B8BD12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2E9E022-DAF6-4CAB-A525-98F2F8B8BD12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{439D7E06-99D7-4ACE-92E7-CA47B789E430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{439D7E06-99D7-4ACE-92E7-CA47B789E430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{439D7E06-99D7-4ACE-92E7-CA47B789E430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{439D7E06-99D7-4ACE-92E7-CA47B789E430}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
