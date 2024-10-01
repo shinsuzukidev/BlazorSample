@@ -1,4 +1,8 @@
 ﻿@page "/radzentest"
+
+@using Radzen;
+@using Radzen.Blazor;
+
 @rendermode InteractiveServer
 @inject DialogService DialogService
 @inject NotificationService NotificationService
@@ -7,10 +11,101 @@
 
 <PageTitle>Radzen Test</PageTitle>
 
-<RadzenButton Click=@(() => ShowAlert("Some message!")) Text="ShowAlert" ButtonStyle="ButtonStyle.Primary"></RadzenButton>
-<RadzenButton Click=@(() => NotifyMessage("button - onclick")) Text="NotifyMessage" ButtonStyle="ButtonStyle.Primary"></RadzenButton>
+<div class="mb-3">
+    <RadzenButton Click=@(() => ShowAlert("Some message!")) Text="ShowAlert" ButtonStyle="ButtonStyle.Primary"></RadzenButton>
+    <RadzenButton Click=@(() => NotifyMessage("button - onclick")) Text="NotifyMessage" ButtonStyle="ButtonStyle.Primary"></RadzenButton>
+</div>
+
+<RadzenDropDown @bind-Value="@selectedCode"
+                Style="width:100%"
+                Data=@codeList                
+                Change="@OnSelectedCodeChange" 
+                AllowClear="true" 
+                Multiple="false"
+                AllowFiltering="true" 
+                class="mb-3"/>
+
+<RadzenButton Click=@(ClickRazor) Text="Radzen attack" ButtonStyle="ButtonStyle.Primary" class="mb-3" />
+
+<div>
+    <RadzenButton Click=@(ClickRazorAdd) Text="Radzen Add" ButtonStyle="ButtonStyle.Primary" class="mb-3" />
+    <RadzenButton Click=@(ClickRazorRemove) Text="Radzen Remove" ButtonStyle="ButtonStyle.Primary" class="mb-3" />
+    <RadzenButton Click=@(ClickRazorDisplay) Text="Radzen Remove" ButtonStyle="ButtonStyle.Primary" class="mb-3" />
+
+</div>
+
+
+@foreach (var item in loopDataList)
+{
+    <p>@item</p>
+}
+
+@if (isDisplay)
+{
+    <p>hello world!</p>
+}
+
 
 @code {
+    public bool isDisplay = false;
+    public string? selectedCode;
+    public List<string> codeList = new List<string> {"aaa", "bbb", "ccc"};
+
+
+    public List<string> loopDataList = new();
+
+    private void ClickRazorDisplay ()
+    {
+        isDisplay = !isDisplay;
+    }
+
+
+    private void ClickRazorAdd()
+    {
+
+        loopDataList.Add(DateTime.Now.ToString());
+    }
+
+    private void ClickRazorRemove()
+    {
+
+        var last = loopDataList.LastOrDefault();
+        if (last != null)
+        {
+            loopDataList.Remove(last);
+        }
+        
+    }
+
+
+    private void ClickRazor()
+    {
+        this.codeList = new List<string> { "def", "ghi", "jkl" };
+        // DialogService.Alert("selectedCode2:" + selectedCode2, "MyTitle", new AlertOptions() { OkButtonText = "Yes" });
+
+    }
+
+    // private void OnValueChanged(string? value)
+    // {
+    //     DialogService.Alert("OnValueChanged:" + value, "MyTitle", new AlertOptions() { OkButtonText = "Yes" });
+    // }
+
+    // private void OnDataChanged()
+    // {
+    //     DialogService.Alert("OnDataChanged", "MyTitle", new AlertOptions() { OkButtonText = "Yes" });
+    // }
+
+    private void OnSelectedCodeChange()
+    {
+        //selectedCode = (string)value;
+        DialogService.Alert("selected-value:" + "/selectedCode:" + selectedCode, "MyTitle", new AlertOptions() { OkButtonText = "Yes" });
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+    }
+
     public void ShowAlert(string msg)
     {
         DialogService.Alert(msg, "MyTitle", new AlertOptions() { OkButtonText = "Yes" });
